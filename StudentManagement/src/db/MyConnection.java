@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import student.Student;
-
+// kết nối mysql 
 public class MyConnection {
    public static Connection getJDBConnection(){
        String url = "jdbc:mysql://localhost:3306/student_management";
@@ -23,7 +23,5 @@ public class MyConnection {
        
        return null;
        
-   }
-   
-       
+   }    
 }
