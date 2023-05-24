@@ -263,11 +263,36 @@ public class homeLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_usernameFieldActionPerformed
 // even nút đăng ký 
     private void dangkyjButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dangkyjButton1ActionPerformed
+        String username = username1Field.getText();
+        String password = Password1Field.getText();
+        if(!username.equals("")&& !password.equals("")){
+                Account account = new Account();
+                account.setUsername(username);
+                account.setPassword(password);
+                myConnection.register(account);
+                
+                JOptionPane.showMessageDialog(this,"Đăng ký thành công");
+        }else{
+            JOptionPane.showMessageDialog(this,"chưa nhập đủ thông tin","Lỗi",JOptionPane.ERROR_MESSAGE);
+        }
         
     }//GEN-LAST:event_dangkyjButton1ActionPerformed
 // even nut đange nhập giáo viên
     private void loginjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginjButtonActionPerformed
-
+        String username = usernameField.getText();
+        String password = PasswordField.getText();
+        boolean check = myConnection.login(username, password);
+            if(!username.equals("")&& !password.equals("")){
+                if(check == true){
+//                    JOptionPane.showMessageDialog(this, "dang nhap thanh cong");
+                    home.setVisible(true);
+                    this.dispose();
+                }else{
+                    JOptionPane.showMessageDialog(this,"tên đăng nhập or mk sai","lỗi",JOptionPane.ERROR_MESSAGE);
+                }
+            }else{
+                JOptionPane.showMessageDialog(this,"vui lòng nhập đủ thông tin","lỗi",JOptionPane.ERROR_MESSAGE);
+            }
     }//GEN-LAST:event_loginjButtonActionPerformed
 
     private void usernameField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameField1ActionPerformed
