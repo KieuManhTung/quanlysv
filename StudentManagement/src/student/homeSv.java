@@ -32,6 +32,7 @@ public class homeSv extends javax.swing.JFrame {
     private Student student = new Student();
     private DefaultTableModel model;
     homeLogin homelogin;
+    dktin DKtin;
     
     public homeSv(String idGoc) {
         initComponents();
@@ -178,6 +179,49 @@ public class homeSv extends javax.swing.JFrame {
         return true;
     }
     
+    public boolean isEmptyDktin(){
+        if(jTextField1.getText().isEmpty()){
+            JOptionPane.showConfirmDialog(this, "bạn cần chọn vào bản thân trong jtable rồi mới ấn đăng ký");
+            return false;
+        }
+        if(jTextField2.getText().isEmpty()){
+            JOptionPane.showConfirmDialog(this, "bạn cần chọn vào bản thân trong jtable rồi mới ấn đăng ký");
+            return false;
+        }
+        if(jDateChooser2.getDate() == null){
+            JOptionPane.showConfirmDialog(this, "bạn cần chọn vào bản thân trong jtable rồi mới ấn đăng ký");
+            return false;
+        }
+        
+        if(jTextField3.getText().isEmpty()){
+            JOptionPane.showConfirmDialog(this, "bạn cần chọn vào bản thân trong jtable rồi mới ấn đăng kýl");
+            return false;
+        }
+        
+        if(jTextField4.getText().isEmpty()){
+            JOptionPane.showConfirmDialog(this, "bạn cần chọn vào bản thân trong jtable rồi mới ấn đăng ký");
+            return false;
+        }
+        if(jTextField5.getText().isEmpty()){
+            JOptionPane.showConfirmDialog(this, "bạn cần chọn vào bản thân trong jtable rồi mới ấn đăng ký");
+            return false;
+        }
+        
+        if(jTextField6.getText().isEmpty()){
+            JOptionPane.showConfirmDialog(this, "bạn cần chọn vào bản thân trong jtable rồi mới ấn đăng ký");
+            return false;
+        }
+        if(jTextField7.getText().isEmpty()){
+            JOptionPane.showConfirmDialog(this, "bạn cần chọn vào bản thân trong jtable rồi mới ấn đăng ký");
+            return false;
+        }
+        if(jTextField8.getText().isEmpty()){
+            JOptionPane.showConfirmDialog(this, "bạn cần chọn vào bản thân trong jtable rồi mới ấn đăng ký");
+            return false;
+        }
+        return true;
+    }
+    
     public void updateSv(Student student){
         String sql = "update tksv set username = ? WHERE id = ?";
         try {
@@ -228,6 +272,7 @@ public class homeSv extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jPanel10 = new javax.swing.JPanel();
         jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -512,12 +557,22 @@ public class homeSv extends javax.swing.JFrame {
             }
         });
 
+        jButton6.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jButton6.setText("ĐĂNG KÝ TÍN");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(98, 98, 98)
+                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(140, 140, 140))
         );
@@ -525,7 +580,9 @@ public class homeSv extends javax.swing.JFrame {
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
@@ -630,7 +687,6 @@ public class homeSv extends javax.swing.JFrame {
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         int selectedRow = jTable1.getSelectedRow();
-        idGoc = jTable1.getValueAt(selectedRow, 0).toString();
         model = (DefaultTableModel) jTable1.getModel();
         jTextField1.setText(model.getValueAt(selectedRow, 0).toString());
         jTextField2.setText(model.getValueAt(selectedRow, 1).toString());
@@ -699,6 +755,14 @@ public class homeSv extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+       if(isEmptyDktin()){
+           dktin DKtin = new dktin(jTextField1.getText());
+           DKtin.setVisible(true);
+       }
+       
+    }//GEN-LAST:event_jButton6ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -738,6 +802,7 @@ public class homeSv extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JComboBox<String> jComboBox1;
     private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
